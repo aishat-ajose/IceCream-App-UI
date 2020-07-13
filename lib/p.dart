@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:onboarding/Aunthenticate/login.dart';
+import 'package:onboarding/details.dart';
 
-Widget pa(Color color, String title, String imgPath, int index){
+final Color pink = Color(0xFFF9B3C2);
+
+Widget pa(Color color, String title, String imgPath, int index, context){
     return Container(
       color: color,
       child: Column(children: [
@@ -79,7 +83,11 @@ Widget pa(Color color, String title, String imgPath, int index){
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white
                       ),
-                       child: Text("Start", style: TextStyle(fontWeight: FontWeight.bold),)
+                       child: InkWell(
+                         onTap: (){
+                           Navigator.push(context,MaterialPageRoute(builder: (context) => Login()));
+                         },
+                         child: Text("Start", style: TextStyle(fontWeight: FontWeight.bold),))
                       ), 
                     SizedBox(width: 20,)
                   ],),
@@ -88,6 +96,93 @@ Widget pa(Color color, String title, String imgPath, int index){
                 SizedBox(height: 10,),
               ],
             ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget flavours(context, String name , String price ,String imgPath){
+    return InkWell(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsPage()));
+      },
+     child: Container(
+        width: MediaQuery.of(context).size.width/3,
+        margin: EdgeInsets.only(right:20),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 30,
+              left: 10,
+              right: 10,
+              child: Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  color:  Color(0xFFF9B3C2).withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(35)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(name, style: TextStyle(fontSize: 18,),),
+                    SizedBox(height: 5,),
+                    Text(price, style: TextStyle(fontSize: 16, color: pink),)
+                  ]
+                ),
+              ),
+            ),
+            Positioned(
+              top:0,
+              right: 0,
+              child: Container(
+                height: 80,
+                width: 80,
+                child: Image.asset(imgPath, fit: BoxFit.cover),
+              )
+            ),
+            Positioned(
+              bottom:20,
+              right: 10,
+              child: Container(
+                alignment: Alignment.center,
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff955a33).withOpacity(0.6)
+                ),
+                child: Icon(Icons.add, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget toppings(String name){
+    return Container(
+      margin: EdgeInsets.only(left:20, bottom: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: pink.withOpacity(0.3) 
+      ),
+      child: Wrap(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal:15.0, vertical:5),
+            child: Text(name, style: TextStyle(fontSize: 18, letterSpacing: 1.2),),
+          ),
+          Container(
+            alignment: Alignment.center,
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xff955a33).withOpacity(0.6)
+            ),
+            child: Icon(Icons.add, color: Colors.white),
           )
         ],
       ),

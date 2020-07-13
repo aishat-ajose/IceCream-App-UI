@@ -3,8 +3,8 @@
 
 
 # Screenshots
-![Onboarding Demo](demo/icecream.gif)
-![App demo](demo/onboarding.gif)
+![Onboarding Demo](/Screenshots/icecream.gif)
+![App demo](/Screenshots/onboarding.gif)
 <div align="center">
     <img src="/Screenshots/2.png" width="300px"</img> <nbsp><nbsp>
     <img src="/Screenshots/3.png" width="300px"</img> 
